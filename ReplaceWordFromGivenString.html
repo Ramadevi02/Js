@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <div class="div">
+            <p id="para">The New Paragraph</p>
+            <p>If you want to chang the character from the given word click the bellow button</p>
+            <b>Everypay</b><br><br>
+            <button type="button" id="btnclick">Click</button><br>
+            <div id="div1"></div>
+        </div>
+        
+
+        <script>
+            // substring() method extracts characters, between to index(position), from a string and returns sunstring
+            
+            let text = "Hello world"
+            let result = text.substring(1, 5);
+            console.log(result + " => substring");
+
+            // substring() method extracts character from start to end
+            let result1 = text.substring();
+            console.log(result1 + "=> full string");
+
+            // subtring() method does not change the original string
+            console.log(text + " => original string")
+
+            var str = "Hella World"
+            var pos = 4;
+            var chr = 'o';
+            function replace(){
+                str = strCharAt();
+                console.log(str);
+            }
+            function strCharAt(){
+
+                // The substring() method return the value from the index
+                // So the return method return first the value from the 0th position to given index of the string
+                // then add 'chr' value which is new value to be replaced,
+                // then add values from the 'index+1' => 4+1 => from 5th position
+
+                if(pos > str.length) return str;
+                return str.substring(0, pos) + chr + str.substring(pos+1)
+            }
+            replace();
+
+            div = document.getElementById("div");
+
+            para = document.getElementById("para");
+            para1 = document.createElement("p");
+            para1.innerHTML = "New Para";
+            para.append(para1);
+            para1.setAttribute("style", "color: Red");
+
+
+            document.querySelector("#btnclick").addEventListener("click", () => {
+                var str1 = "Everpay";
+                var pos1 = prompt("Enter position of character you want to change");
+                var index = parseInt(pos);
+                var chr1 = prompt("Enter the character of you want to be replaced");
+
+                function toreplace(){
+                    str1 = setCharAt();
+                    document.querySelector("#div1").innerHTML = "The chaged string is : " + str1;
+                }
+                function setCharAt(){
+                    if (index > str1.length){
+                        return str1;
+                    } else {
+                        return str1.substring(0, index) + chr1 + str1.substring(index+1);
+                    }
+                }
+                toreplace();
+            });
+        </script>
+    </body>
+</html>

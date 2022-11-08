@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <h2>Palindrome</h2>
+        <div id="div1"></div>
+        <br>
+        <p>Click the button to enter enter the word to fine out the palindrome</p><br>
+        <button type="button" onclick="onclick1()">Click</button>
+        <div class="pdm"></div>
+
+        <script>
+            var original = "aabcaa";
+            var reverse = original.split("").reverse().join("");
+
+            if (original == reverse) {
+                document.querySelector("#div1").innerHTML = "Yes! The given word is palindrome"
+            }   else{
+                document.querySelector("#div1").innerHTML = "It's not a palindrome"
+            }  
+            
+            //We can get the input from the user to fine out the given word are whether palindrome or not
+
+            function onclick1(){
+                var user = prompt("Enter word to find out the palindrome");
+                var reverse1 = user.split("").reverse().join("");
+
+                if( user == reverse1) {
+                    document.querySelector(".pdm").innerHTML = "Yes! The given word is palindrome"
+                } else {
+                    document.querySelector(".pdm").innerHTML = "It's not a palindrome"
+                }
+            }
+
+            var x = "aabcaa";
+            var y;
+            var a = x.split("");
+            var b = a.reverse();
+            var c = b.join("");
+
+            for( i=0; i< a.length; i++){
+                
+                console.log(a[1])
+            }
+            console.log(a + "a")
+            console.log(b + "b")
+            console.log(c + "c")
+
+            if (x == c) console.log("yes");
+            console.log("no");
+        </script>
+    </body>
+</html>

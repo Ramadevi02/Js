@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <h2>JavaScripted</h2>
+        <script>
+            a=1;
+            b=5;
+
+            console.log(typeof(a));//using this method we can identify the type of the variable
+
+            var x1 = 10;
+            console.log(x1);
+            var x1 = 20;
+            console.log(x1);
+
+            // Variables defined with let cannot be Redeclared.
+            // let and const are introduced later in 2015. These two keyword provide "Block scope" in javascript
+            // Variable declared inside a{} block cannot ba accessed from outside the block but 
+            // "var" keyword we can redeclare the value even in the outside of the block and can access the value from oustside of block.
+
+
+            let y1 = 10;
+            console.log(y1);
+            // let y1 = 20; => we can't redeclare like this
+            y1 = 20; //reassigning
+            console.log(y1);
+
+            ab = 10;
+            bc = 20;
+
+            console.log("Arithmetic")
+            console.log(ab+bc);
+            console.log(ab-bc);
+            console.log(ab*bc);
+            console.log(ab/bc);
+
+            console.log("Increment");
+            console.log(ab++);
+            console.log(bc--);
+            console.log(ab);
+            console.log(bc);
+
+            if(ab < bc){
+                console.log("a is less than b")
+            }else{
+                console.log("a is not less than b");
+            }
+            // We can code these in a single line
+            (a < b) ? console.log("a is less than b") : ("a is not less than b");
+
+
+            // Nested While Loop
+            /* while(a<5){
+                while(b>0){
+                    console.log(a + "=" + b );
+                    a++; b--;
+                }
+            }*/
+
+            // If statement within While Loop
+            while(a < 5){
+                if(b < 5){
+                    a++;
+                }
+                b--;
+                console.log(a + "=" + b);
+            }
+            //Do while loop
+            c=1; // change the value to 10
+            // difference between while, dowhile is dowhile print alteast print one output regardless of condition.
+            do{
+                console.log(c++);
+            } while(c<10);
+            // Nested for loop
+            for(d=1; d<=2; d++){
+                for(e=1; e<=2; e++){
+                    console.log(d + "=" +e);
+                }
+            }
+            for(f=0, g=1; f<=3; g += f, document.write(g), f++);
+            /*
+             f=0, g=1, after condition statisfy g=1, then g=1 then f++
+             f=1, g=1, after condition statisfy g=2, then g=2 then f++
+             f=2, g=2, after condition statisfy g=4, then g=4 then f++
+             f=3, g=4, after condition statisfy g=7, then g=7 then f++
+             conditon false.
+            */
+
+            // Rows and Cols
+            row= 5; // the row and column value can get by the user
+            col= 5;
+
+            document.write("<table border=1>");
+            for(rows=1; rows <= row; rows++){
+                document.write("<tr>");
+                for(cols=1; cols<=col; cols++){
+                    document.write("<td>" + rows + "," + cols + "</td>");
+                }
+                document.write("</tr>");
+            }
+            document.write("</table>");
+
+            a1= [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+            console.log(a[0]);
+            console.log(a[1]);
+            console.log(a[2]);
+            // if we want to print every item in the a1 we have write code for every value but using the for loop it will be easy
+            console.log("Printing values using for loop");
+            for(i=0; i<a1.length; i++){
+                console.log(a1[i]);
+            }
+
+            console.log("Printing values using while loop");
+            i1=0;
+            while(i1<a1.length){
+                console.log(a1[i1++]);
+            }
+
+            //Modern for..in loop
+            console.log("Modern for..in loop");
+            for(temp in a1){
+                console.log(temp + "," + a1[temp]);
+            }
+
+            //Modern for..of loop
+            console.log("Modern for..of loop");
+            for(temp1 of a1){
+                console.log(temp1 + "," + a1[temp1]);
+            }
+        </script>
+    </body>
+</html>

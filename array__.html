@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <div class="demo"></div>
+        <div class="demo1"></div>
+        <div class="demo2"></div>
+        <div class="demo3"></div>
+        <div class="demo4"></div>
+        <div class="demo5"></div>
+        <div class="demo6"></div>
+        <div class="demo7"></div>
+        <div class="demo8"></div>
+        <div class="demo9"></div>
+        <div class="demo10"></div>
+        <div class="demo11"></div>
+        <div class="demo12"></div>
+        <div class="demo13"></div>
+        <div class="demo14"></div>
+        <div class="demosom"></div>
+        <div class="demosom1"></div>
+
+    </body>
+    <script>
+        const cars = ["Saab", "Volvo", "BMW", "Suzuki"];
+
+        //  ********* Array properties **********//
+
+        // length => return length of an array (is always one more than the highest array index)
+        document.querySelector(".demo").innerHTML = cars.length;
+
+        //loop through an array
+        let text = "<ul>";
+        for(let i=0; i<cars.length; i++){
+            text +="<li>" + cars[i] + "</li>" ;
+        }
+        text += "</ul>";
+        document.querySelector(".demo1").innerHTML = text;
+
+        // forEach function
+        let texts = "<ol>";
+        cars.forEach(element => {
+            texts += "<li>" + element + "</li>";
+        });
+        texts += "</ol>";
+        document.querySelector(".demo1").innerHTML = texts;
+
+        // we can also add new element to an array using push() method
+        // cars.push("hyundai")
+
+        //**************** Methods **********//
+        // toString() => method return an array as a string with comma separated string
+        document.querySelector(".demo2").innerHTML = cars.toString();
+        // join() => method also join all array element into a string. it behave like toString() method 
+        //           but in addition you can specify the separated
+        document.querySelector(".demo3").innerHTML = cars.join("*");
+
+        // pop() => Popping item out of an array . remove the last element from an array
+        //          return the value that was popped out
+        const fruits = ["Banana", "Mango", "Orange", "Lemon", "Apple"];
+        document.querySelector(".demo4").innerHTML = fruits + "<br>" + fruits.pop() + "<br>" + fruits;
+
+        // push() => Pushing item out of an array. adding the last element to an array
+        //           return the new array length
+        const fruits1 = ["Banana", "Mango", "Orange"];
+        document.querySelector(".demo5").innerHTML = fruits1 + "<br>" + fruits1.push("Kiwi") + "<br>" + fruits1; 
+
+        // shift() =>method remove the first array element and shifts all other elements to a lower index.
+        //           return the values that was shifts out.
+        const fruits2 = ["Banana", "Mango", "Orange"];
+        document.querySelector(".demo6").innerHTML = fruits2 + "<br>" + fruits2.shift() + "<br>" + fruits2;
+
+        // unshift() => method add a new element to an array(at the beginning) & unshift older elements
+        //              return the new array length
+        const fruits3 = ["Banana", "Mango", "Orange"];
+        document.querySelector(".demo7").innerHTML = fruits3 + "<br>" + fruits3.unshift("Lemon") + "<br>" + fruits3;
+
+        // length property provides an easy way to append a new element to an array
+        const fruits4 = ["Banana", "Mango", "Orange"];
+        fruits4[fruits4.length] = "Kiwi";
+        document.querySelector(".demo8").innerHTML = fruits4;
+
+        //concat() => method creates a new array by merging existing arrays
+        //            does not change the existing arrays. it always returns a new array
+        const arr1 = ["Cecilie", "Lone"];
+        const arr2 = ["Emil", "Tobias", "Linus"];
+        const arr3 = ["Robin", "Morgan"];
+        const chilldren = arr1.concat(arr2,arr3);
+        document.querySelector(".demo9").innerHTML = chilldren;
+                    
+        const arr4 = ["Emil", "Tobias", "Linus"];
+        document.querySelector(".demo10").innerHTML = arr4.concat("Peter");
+
+        // splice() => method can used to add or remove item to an array
+        //  splice (2 (position), 0(how many element should be removed), "Kiwi"(define new element to be added))
+        //              return an array with the deleted items.
+        const fruits5 = ["Banana", "Mango", "Orange"];
+        fruits5.splice(2, 0, "Lemon");
+        document.querySelector(".demo11").innerHTML = fruits5;
+        const fruits6 = ["Banana", "Mango", "Orange"];
+        document.querySelector(".demo12").innerHTML = fruits6 + "<br>" + fruits6.splice(2, 1, "Lemon", "Kiwi") + "<br>" + fruits6;
+        
+        // slice() => method slice out a piece of an array into a new array. it create new array
+        //            does not remove any elements from the source array
+        const fruits7 = ["Banana", "Mango", "Orange", "Lemon"];
+        document.querySelector(".demo13").innerHTML = fruits7 + "<br>" + fruits7.splice(2) + "<br>" + fruits7;
+
+        // sort() => method sort an array alphabetically.
+        // reverse() => method reverse the element in an array
+        //              we can use it to sort an array in descending order
+
+        // map() => method create a new array performing a function on each array element
+        const num1 = [49, 20, 30, 4, 16];
+        const num2 = num1.map(myfun); // callback function
+        function myfun(value){
+            return value * 2;
+        }
+        console.log(num2);
+
+        // filter() => methods create a new array with array element that passes a test.
+        const num3 = [45, 4, 9, 16, 25];
+        const over18 = num3.filter(myfun1);
+        function myfun1(value){
+            return value > 18;
+        }
+        console.log(over18);
+
+        // reduce() => method runs a fun on each array element to produce a single value.
+        const num5 = [45, 4, 9, 16, 25];
+        let sum = num5.reduce(sums);
+        function sums(total/*the initial value / previously returned*/, value){
+            return total + value;
+        }
+        console.log("The sum is :" + sum);
+
+        // every() => method check if all array element passes the test
+        // some() => method checks if some array element passes the test
+        const num = [45, 4, 9, 16, 25];
+        let allover18 = num.every(myfunc);
+        function myfunc(value){
+            return value > 18;
+        }
+        console.log("All over 18 is " + allover18);
+
+        // find() => method return the value of the first array element that passes a test function
+        // findIndex() => return the index of array element that passes a test function
+        let findnum = num.find(findfunc);
+        function findfunc(value) {
+            return value > 18;
+        }
+        console.log("first number over 18 is " + findnum);
+
+        // keys() => method returns an array iterator object with the keys of an array
+        const f = fruits.keys();
+        let tex = "";
+        for(let x of f){
+            tex += x + "<br>";
+        }
+        document.querySelector(".demosom").innerHTML = tex;
+        // entries() => method return an array iterator object with key/value pairs
+        const en = fruits.entries();
+        for(let x of en){
+            document.querySelector(".demosom1").innerHTML += x + "<br>";
+        }
+
+    </script>
+</html>

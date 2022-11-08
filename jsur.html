@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body onload="onclick1()">
+        <div class="pdm"></div>
+        <script>
+            function onclick1(){
+                var user = prompt("Enter word to find out the palindrome");
+                var reverse1 = user.split("").reverse().join("");
+
+                if( user == reverse1) {
+                    document.querySelector(".pdm").innerHTML = "Yes! The given word is palindrome"
+                } else {
+                    document.querySelector(".pdm").innerHTML = "It's not a palindrome"
+                }
+            }
+            //onclick1();
+        </script>
+    </body>
+</html>

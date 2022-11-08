@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <div class="str_meth"></div>
+    </body>
+    <script>
+        //There are 3 methode for extracting a part of string
+
+        // slice(start, end)
+            //its extract a part of methode and return the extracted part as a new string
+        function sliceStr(){
+            let str = "Apple, Bannana";
+            document.querySelector(".str_meth").innerHTML = str.slice(3, 8);
+        }
+        sliceStr();
+
+        // substring(start, end)
+           // its same as the slice(). the differece is the start & end values lessthan 0 are treated as 0 in substring()
+
+        // substr(start, end)
+        var str = "Apple,Bannana";
+        document.querySelector(".str_meth").innerHTML = str.substr(6, str.length);
+
+        // replace()  => method replaces a specified value with another value. does't change the string it is called on.
+           // its return new string & replaces the only first match.To replace all matches use /g flag set.
+        // toUpperCase()
+        // toLowerCase()
+        // concat()
+        // trim()  => removes the whitespace from both side
+        // charAt() => return the character at a specified index in a string
+        // charCodeAt() => return the unicode of the character at a specified indesx in a string
+        // split() => used for split the string into array of substring
+
+        // indexOf() => return the position of first occcurence. can't teke poerful search value(reguler rexpression)
+        var srt = "the best movie ever is harry potter";
+        document.querySelector(".str_meth").innerHTML = srt.indexOf("b");
+
+        // lastIndexOf() => return the index of last occurence of a specified text in a string
+        // indexOf() & lastIndexOf() return -1 if the text is not found and both accept a second parameter as the
+        // starting position for the search
+        let str1 = "the best movie ever is harry potter";
+        document.querySelector(".str_meth").innerHTML = str1.lastIndexOf("e", 10);
+
+        // search() => similar to indexOf() but can't take a second start position argument.
+
+        // match()=>it searches a string for a match against reguler expression & return the mactches as an Array object
+        var str2 = "The rain in the SPAIN stays mainly in the plain";
+        document.querySelector(".str_meth").innerHTML = str2.match(/ain/g);
+
+        // includes() methods return true if a string containe a specific value
+        // startsWith()
+        // endsWith()
+
+    </script>
+</html>

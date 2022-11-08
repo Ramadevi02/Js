@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        
+        <script>
+            row = 3;
+            col = 3;
+            function table(){
+                document.write("<table border=1>");
+            for(rows=1; rows <= row; rows++){
+                document.write("<tr>");
+                for(cols=1; cols<=col; cols++){
+                    document.write("<td>" + rows + "," + cols + "</td>");
+                }
+                document.write("</tr>");
+            }
+            document.write("</table>");
+            }
+            table();
+            document.write("<br>");
+
+            //We can pass value using parameter
+
+            function table1(row, col){
+                document.write("<table border=1>");
+            for(rows=1; rows <= row; rows++){
+                document.write("<tr>");
+                for(cols=1; cols<=col; cols++){
+                    document.write("<td>" + rows + "," + cols + "</td>");
+                }
+                document.write("</tr>");
+            }
+            document.write("</table>");
+            }
+            table1(3, 4);
+            document.write("<br>");
+            
+            // We also can asign the values in the parameter
+
+            function table2(row=4, col=5){
+                document.write("<table border=1>");
+            for(rows=1; rows <= row; rows++){
+                document.write("<tr>");
+                for(cols=1; cols<=col; cols++){
+                    document.write("<td>" + rows + "," + cols + "</td>");
+                }
+                document.write("</tr>");
+            }
+            document.write("</table>");
+            }
+            table2();
+        </script>
+    </body>
+</html>

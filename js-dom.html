@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .para1{
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <form name="form_test">
+            <input type="text" id="fname" name="usrname" class="usrname"><br>
+            <input type="checkbox" name="chksub" value="HTML">HTML<br>
+            <input type="checkbox" name="chksub" value="CSS">CSS<br>
+            <input type="checkbox" name="chksub" value="Bootstrap">Bootstrap<br>
+            <input type="checkbox" name="chksub" value="JS">JS<br>
+            <input type="button" value="Click" onclick="retrieve();">
+        </form>
+
+        <h2>JavaScript</h2>
+
+        <p id="p1"><strong>Bold</strong>text is there.</p>
+        <p id="p2">Some text is there.</p>
+        <div id="div1">Div content is here...</div>
+        <div id="div2">Div 2 content is here...</div> <br>
+        <div id="div3"></div><br>
+
+        <button type="button" onclick="newbutton()">Click</button>
+        <br>
+        <br>
+        <form name="form_test1">
+            <input type="text" name="usrname1" id="fname1"> <br> <br>
+            <button type="button" id="onclick">Click</button><br>
+        </form>
+
+        <div id="bdiv">
+            <h2>JavaScript</h2>
+
+            <p id="p_1"><strong>Note:</strong> This is the big paragraph</p>
+            <p id="p_2">This is the second paragraph</p>
+
+            <div id="div_1">Div content is here..</div><br>
+            <div id="div_2">Div 2 content is here..</div><br>
+
+            <h4 id="h4">This is heading</h4>
+        </div>
+
+        <button type="button" id="btnClick">Click</button>
+
+        <script>
+            function retrieve(){
+                console.log("Button is Clicked.");
+                // syntax : document.<form name>.<input name>.value;
+                user = document.form_test.usrname.value;
+                console.log(user);
+
+                subject = document.form_test.chksub;// We have to control all the element in order to retrieve the checked values
+                
+                // it's for only retrieve the one value
+                if(document.form_test.chksub[0].checked){
+                    s1 = document.form_test.chksub[0].value;
+                    console.log(s1);
+                }
+
+                // if want to retrieve all the checked values
+                for(i=0; i<subject.length; i++){
+                    if(document.form_test.chksub[i].checked){
+                        s2 = document.form_test.chksub[i].value;
+                        console.log(s2);
+                    }
+                }
+
+                //We can retrieve the value using different Method
+                // getElementsByName => we have to mention the index 'cause name have a multiple values like in the checkBox
+                byname = document.getElementsByName("usrname")[0].value;
+                console.log("By Name : " + byname);
+
+                // getElementById
+                byId = document.getElementById("fname").value;
+                console.log("By id : " + byId);
+
+                // getElementsByTagName
+                byTagName = document.getElementsByTagName("input")[0].value;
+                console.log("by tagName :  " + byTagName);
+
+                // getElementsByClass
+                byClass = document.getElementsByClassName("usrname")[0].value;
+                console.log("By ClassName : "+ byClass);
+
+                // we can also retrieve the value by using the Modern method which is mostly used in these days
+
+                // QuerySlector Id
+                byQId = document.querySelector("#fname").value;
+                console.log("By QuerySelector Id : " + byQId);
+
+                // QuerySlector ClassName
+                byQClass = document.querySelector(".usrname").value;
+                console.log("By QuerySelector ClassName : " + byQClass);
+
+                //QuerySelectorAll for like checkbox
+                QAll = document.querySelectorAll("[name=chksub]");
+                for(i=0; i<QAll.length; i++){
+                    if(document.form_test.chksub[i].checked){
+                        s3 = document.form_test.chksub[i].value;
+                        console.log("By QuerySelector All : " + s3);
+                    }
+                }
+
+                //there is a append prepend before insertBefor
+
+            }
+            function newbutton(){
+                p1 = document.getElementById("p1").innerHTML;
+                p2 = document.getElementById("p1").innerText;
+                console.log("by gEBId +innerHTML : " + p1);
+                console.log("by gEBId +innerText : " + p2);
+
+                p3 = document.querySelector("#p1").innerHTML;
+                console.log("by querselector" + p3);
+
+                document.querySelector("#div1").innerHTML = div1;
+                
+                div = document.querySelector("#div1").innerText;
+                console.log(div);
+
+                rows = 3;
+                cols = 4;
+                output = "";
+                output += "<table border=1>";
+                for(row=1; row<=rows; row++){
+                    output += "<tr>";
+                    for(col=1; col<=cols; col++){
+                        output += "<td>" + row + ", " + col + "</td>";
+                    }    
+                    output += "</tr>";
+                }    
+                output += "</table>";
+
+                document.querySelector("#div3").innerHTML = output;
+            }
+
+            //Dom extra DOm
+
+            //We can do it like this or we can call an existing sunction using function name
+            document.querySelector("#onclick").addEventListener("click", () => {
+                console.log("The Button is Clicked.");
+            });
+
+            document.querySelector("#onclick").addEventListener("click", newbutton);
+
+            // Append, Prepend, InsertBefore
+
+            document.querySelector("#btnClick").addEventListener("click", () => {
+                bdiv = document.querySelector("#bdiv");
+                p_1 = document.querySelector("#p_1");
+                p_2 = document.querySelector("#p_2");
+                div_1 = document.querySelector("#div_1");
+                div_2 = document.querySelector("#div_2");
+                h4 = document.querySelector("#h4");
+
+                // Append is way to insert content to the end of already existing elements
+                div_1.append(p_1);//this append the p1 container after div1 container
+
+                bdiv.insertBefore(p_1, h4); // This is similar to append
+
+                //insert elements before already existing elements
+                p_2.prepend(h4);
+
+                //we can add/remove an attribute in an existing elements 
+                para1 = document.createElement("p");
+                para1.innerHTML = "New Paragraph Created";
+
+                bdiv.append(para1);
+
+                para1.setAttribute("class", "para1");
+
+                h4.setAttribute("style", "color: yellow");
+
+                button = document.createElement("button");
+                button.innerHTML = "New button";
+                button.setAttribute("style", "background-color: green; color: white");
+                button.addEventListener("click", () => {
+                    console.log("New event trigered from the new button.");
+                });
+
+                bdiv.append(button);
+            });
+        </script>
+    </body>
+</html>

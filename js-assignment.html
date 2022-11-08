@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #btnclick{
+                display: inline-block;
+            }
+            #hide{
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <h4>Read More Content</h4>
+        <p>The big paragraph goes here.. click read more to display the more content <b id="btnclick" style="color: brown;">Read more</b> </p>
+        <p id="hide">The more more content goes here....</p>
+        <div id="div1"></div>
+        <br>
+        <p>Click button to demonstrate</p>
+        <button type="button" id="btnclick2">Click</button>
+        <p id="math"></p>
+        <br>
+        <br>
+        <button type="button" id="btnclick3">Click to do sum</button>
+        <span id="math1"></span>
+        <br><br>
+        <button type="button" id="btnclick4">Click to do sum</button>
+        <span id="math2"></span>
+
+        <script>
+
+            /********    Read more content using JavaScript   *********/
+            document.querySelector("#btnclick").addEventListener("click", () =>{
+
+                // declar the variable for to be hide content
+                var x = document.getElementById('hide');
+                if (x.style.display === "none"){
+                    x.style.display = "block";
+                }else {
+                    x.style.display = "none";
+                }
+                
+                // This is for hiding the 'Read more' after clicking the 'Read more'
+                var y = document.getElementById('btnclick');
+                if (y.style.display === "inline-block"){
+                    y.style.display = "none";
+                } else {
+                    y.style.display = "inline-block";
+                }
+            });
+            
+            /********  Palindrome   *********/
+            function palindrome(){
+                var original = "abbcbba";
+
+                // The split() methode used for split the string into an array of substrings
+                // The reverse() method used to reverse the order of the elements in an array
+                // The join() method used for return the array as a string, we separate using separator
+                var reverse = original.split("").reverse().join("");
+
+                if(original == reverse){
+                    console.log("yes, it's Palindrone");
+                } else {
+                    console.log("the givern string is not palindrome");
+                }
+            }
+            palindrome();
+
+            var str = ['a', 'b', 'c']
+            var str1 = str.join("||");
+            console.log(str1);
+
+            var str = "Everypay";
+            newval = 'd';
+            replacestr = str.replace('p', newval);
+            console.log(replacestr);
+
+            nstr = str.substr(2, str.length);
+            console.log(nstr);
+
+            /*********   Remove specific character from the string   *******/
+            // Method 1 => parsing the value in the function
+            var str1 = "Hella world";
+            function replace(){
+                str1 = setCharAt(str1, 4, 'o');
+                console.log(str1);
+            }
+            function setCharAt(str1, index, chr){
+                if(index > str1.length-1) return str;
+                
+                // The substring() method give the value from the index
+                // So the return method return first the value from the 0th position to given index of the string
+                // then add 'chr' value which is new value to be replaced,
+                // then add values from the 'index+1' => 4+1 => from 5th position
+                return str1.substring(0, index) + chr + str1.substring(index+1);
+            }
+            replace();
+
+            // Method 2 => getting input from the user or using predefined variables
+            var str1 = "Hella world";
+            var index = 4;
+            var chr = 'o';
+            function replace1(){
+                str1 = setCharAt1();
+                console.log("Excercise :" + str1);
+                document.querySelector("#div1").innerText = str1;
+            }
+            function setCharAt1(){
+                if(index > str1.length-1) return str;
+                return str1.substring(0, index) + chr + str1.substring(index+1);
+            }
+            replace1();
+
+            document.querySelector("#btnclick3").addEventListener("click", () => {
+                var num1 = prompt("Enter number to do the sum");
+                var n = parseInt(num1); // We have to convert the string to a numeric number or we can use "parseFloat"
+                var sum = n + n/2 + n/4 + n/8;
+                document.getElementById("math1").innerHTML = sum;
+            });
+            document.querySelector("#btnclick2").addEventListener("click", () =>{
+                var stu = prompt("Enter Your Name");
+                if(stu != null){
+                    document.querySelector("#math").innerHTML = "Hello " + stu + "! How are you today?";
+                }
+            });
+            
+            document.querySelector("#btnclick4").addEventListener("click", () => {
+                var str1 = prompt("Enter a string", "ex..something");
+                var ind = prompt("Enter the position of character going to be replaced");
+                var index = parseInt(ind);
+                var ch = prompt("Enter the character which you want to replaced by");
+                var chr = parseFloat(ch);
+                function replace1(){
+                    str1 = setCharAt1();
+                    console.log("Excercise :" + str1);
+                    document.querySelector("#math2").innerText = str1;
+                }
+                function setCharAt1(){
+                    if(index > str1.length-1) return str;
+                    return str1.substring(0, index) + chr + str1.substring(index+1);
+                }
+                replace1();
+            });
+        </script>
+    </body>
+</html>

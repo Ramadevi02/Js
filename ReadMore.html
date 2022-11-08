@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #Readmore{
+                display: inline-block;
+            }
+            #hide{
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>This is the Heading</h2>
+        <p>This big paragraph goes here...This big paragraph goes here... <b id="Readmore">Read More</b> </p>
+        <p id="hide">This is the extra paragrapg.. this is will display whene you click the Read More.</p>
+
+        <!-- This is for Calculate the sum for given numbers -->
+        <b>Click the Demo button for sum of the given numbers</b>
+        <button type="button" id="Demo">Demo</button>
+        <div id="div1"></div>
+
+        <script>
+            document.querySelector("#Readmore").addEventListener("click", readmore );
+            function readmore(){
+
+                // Declare the variable for the hide container
+                var x = document.getElementById("hide");
+                if(x.style.display == "none"){
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+
+                // it's for the 'Read more' to hide after the clicking the 'Read More'
+                var y = document.getElementById("Readmore");
+                if(y.style.display == "inline-block"){
+                    y.style.display = "none";
+                } else {
+                    y.style.display = "inline-block"
+                }
+            }
+
+            document.querySelector("#Demo").addEventListener("click", () => {
+                var usr_num = prompt("Enter the number to calculate the sum");
+                var n = parseInt(usr_num); //We have to convert the string to numeric number and we use 'parseFloat' method
+                var sum = n + n/2 + n/4 + n/8;
+
+                document.getElementById("div1").innerHTML = sum;
+
+            });
+        </script>
+    </body>
+</html>
